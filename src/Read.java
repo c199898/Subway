@@ -43,7 +43,7 @@ public class Read {
     
     public  void print() {
     	for (int i=0;i<rawList.size();i++) {
-    		System.out.println(stationList.get(i).way+":"+stationList.get(i).name+stationList.get(i).disToNext);
+    		System.out.println(i+"  "+stationList.get(i).way+":"+stationList.get(i).name+stationList.get(i).disToNext);
     	}
     }
     
