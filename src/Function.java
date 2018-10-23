@@ -47,7 +47,6 @@ public class Function {
 					List.add(r.stationList.get(i).name);
 				}
 			}
-		
 		String[] result = (String[])List.toArray((new String[0]));
 		return result;
 		}
