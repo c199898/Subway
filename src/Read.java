@@ -2,13 +2,20 @@ import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.Iterator;
 
 public class Read {
-    private ArrayList <Raw> rawList;
+    public ArrayList <Raw> rawList;
     public ArrayList <Station> stationList;
+    public HashSet <String> stationName;
+    public ArrayList <String> nameList;
     public Read() {
     	this.rawList=new ArrayList <Raw> ();
     	this.stationList=new ArrayList <Station> ();
+    	this.nameList=new ArrayList <String> ();  //存放唯一站点名
+    	this.stationName=new HashSet<>();    //去除站点名中的重复元素
     	String str ="1号线";
 	try {
 	File file = new File("subway.txt");
@@ -35,19 +42,24 @@ public class Read {
 	catch(Exception e) {
 		 System.err.println("read errors :" + e);
 	}
+	
+	
 	for(int j=0;j<rawList.size();j++) {
 		stationList.add(new Station(rawList.get(j).way,rawList.get(j).thisStation,Double.parseDouble(rawList.get(j).distance)) );
+	} 
+	
+	for(int i=0;i<=185;i++) {
+		stationName.add(stationList.get(i).name);
 	}
+	
+	
+	Iterator <String> it=stationName.iterator();
+	while(it.hasNext()) {
+		nameList.add(it.next());
+	}
+	
+    
     }
-    
-    
-    public  void print() {
-    	for (int i=0;i<rawList.size();i++) {
-    		System.out.println(i+"  "+stationList.get(i).way+":"+stationList.get(i).name+stationList.get(i).disToNext);
-    	}
-    }
-    
-
     
 
 }
