@@ -21,7 +21,7 @@ public class Read {
 	File file = new File("subway.txt");
 	BufferedReader br = new BufferedReader(new FileReader(file));
 	String line=null;
-	while((line=br.readLine())!=null) {
+	while((line=br.readLine())!=null) {     //判断是几号线
         if(line.equals("1号线站点间距")) str="1号线";
         else if(line.equals("2号线站点间距")) str="2号线";
         else if(line.equals("3号线站点间距")) str="3号线";
@@ -32,8 +32,8 @@ public class Read {
         else if(line.equals("阳逻线站点间距")) str="阳逻线";
         else if(line.equals("11号线东段站点间距")) str="11号线东段";
         else{
-        String[] temp = line.split("\t");
-		rawList.add(new Raw(str,temp[0],temp[1],temp[2]));
+        String[] temp = line.split("\t");     //按tab分割
+		rawList.add(new Raw(str,temp[0],temp[1],temp[2]));   //创捷原始类对象，存入动态数组
 		}
 		
 	}
