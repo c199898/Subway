@@ -1,6 +1,4 @@
-import java.nio.file.ReadOnlyFileSystemException;
-import java.util.Iterator;
-import java.util.Set;
+
 
 
 public class Test {
@@ -8,11 +6,12 @@ public class Test {
     public static void main(String[] args) {
     	Read r=new Read();
      SearchPath sp=new SearchPath();
-     sp.init();
-     for(int i=0;i<160;i++) {
-    	 System.out.println(sp.s[0][i]);
-     }
-     
+        int x=r.nameList.indexOf("径河");
+        int y=r.nameList.indexOf("三店");
+        int z=r.nameList.indexOf("码头潭公园");
+       sp.floyd(y, x);
+       sp.floyd(y, x);
+       sp.floyd(x, z);
     
 
      
