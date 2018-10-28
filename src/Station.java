@@ -8,4 +8,12 @@ public class Station {
     	 this.name=name;
     	 this.disToNext=disToNext;
       }
+      
+      public String returnWay(String aname) {
+    	  if(aname.equals(this.name)) {
+    		  return this.way;
+    	  }
+    	  else return null;
+    		 
+      }
 }

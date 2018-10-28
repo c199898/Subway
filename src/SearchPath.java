@@ -1,12 +1,21 @@
+import java.util.ArrayList;
+
 public class SearchPath {
        double[][] dis=new double[160][160];
        int[][] path=new int[160][160];
        int inf=100;
-       int x,y,next;
+       int x;
+       int y;
+       int next;
        int normalPrice;
+       String beginWay;
+       public ArrayList <String> pathList;
        Read r=new Read();
+       TransStation t=new TransStation();
        
-       
+       public SearchPath() {
+    	   this.pathList=new ArrayList <String>();
+       }
        
        public void init() {
     	   
@@ -38,10 +47,7 @@ public class SearchPath {
         	     }
            }
        
-       
-       
-       
-       public void floyd(int x,int y) {
+       public void floyd(int x,int y) {   //x和y为站点名在nameList中的索引位置  x=r.nameList.indexOf("站名")
     	   init();
     	   for(int k=0;k<160;k++)
     		    //做n次迭代，每次均试图将顶点k扩充到当前求得的从i到j的最短路径pij上
@@ -81,12 +87,15 @@ public class SearchPath {
     		       else//Pij存在
     		       {
     		        System.out.println(r.nameList.get(x));
+    		        pathList.add(r.nameList.get(x));
     		        while(next!=y)
     		        {
+    		          pathList.add(r.nameList.get(next));
     		          System.out.println("——>"+r.nameList.get(next));  //打印后继点
     		          next=path[next][y];        //继续找下一个后继点
     		         }
-    		            System.out.println("——>"+r.nameList.get(y));       //打印终点
+    		           pathList.add(r.nameList.get(y));
+    		           System.out.println("——>"+r.nameList.get(y));       //打印终点
     		        }
     		      }
     		     
@@ -95,8 +104,35 @@ public class SearchPath {
        
     		}
        
+       public void finalPrint() {
+    	    for(int i=0;i<r.rawList.size();i++) {
+    	  if(r.rawList.get(i).thisStation.equals(pathList.get(0))&&r.rawList.get(i).nextStation.equals(pathList.get(1))){
+             beginWay=r.rawList.get(i).way;
+           }
+    	  else if(r.rawList.get(i).thisStation.equals(pathList.get(1))&&r.rawList.get(i).nextStation.equals(pathList.get(0))) {
+    		 beginWay=r.rawList.get(i).way;
+    	  }
+       }
+    
+    	    System.out.println(beginWay);
+    	    
+    	    
+    	    
+    	    
+    	    
+    	    
+       }
+       
+       
        
 }
+
+       
+
+
+
+       
+
 
     	   
     	   

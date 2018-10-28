@@ -5,7 +5,7 @@ public class Function {
      Read r=new Read();
      
      
-	public void search() {
+	public void search() {    //输入站名，输出经过该站的地铁线路
 		int flag=0;
 		String ss = null;
 		Scanner sc=new Scanner(System.in);
@@ -24,7 +24,7 @@ public class Function {
 	}
 	
 	
-	public String[] toEnd(String way,String endStation) {
+	public String[] toEnd(String way,String endStation) {   //输入线路与终点站，输出所有站点
 		int start=0;
 		int end=0;
 		ArrayList <String> List= new ArrayList <String> ();
