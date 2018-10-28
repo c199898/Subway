@@ -115,7 +115,7 @@ public class SearchPath {
     	  }
        }
     	   System.out.println("乘坐"+Way);
-           for(int i=2;i<pathList.size();i++){
+           for(int i=2;i<pathList.size()-1;i++){
         	   for(int j=0;j<r.rawList.size();j++){
         		   if(t.transList.indexOf(pathList.get(i))!=-1) {  //pathList[i]为换乘站
         			   if(r.rawList.get(j).thisStation.equals(pathList.get(i))&&r.rawList.get(j).nextStation.equals(pathList.get(i+1))){
