@@ -8,7 +8,8 @@ public class SearchPath {
        int y;
        int next;
        int normalPrice;
-       String beginWay;
+       String Way;
+       String Way2;
        public ArrayList <String> pathList;
        Read r=new Read();
        TransStation t=new TransStation();
@@ -105,23 +106,49 @@ public class SearchPath {
     		}
        
        public void finalPrint() {
-    	    for(int i=0;i<r.rawList.size();i++) {
+    	   for(int i=0;i<r.rawList.size();i++) {
     	  if(r.rawList.get(i).thisStation.equals(pathList.get(0))&&r.rawList.get(i).nextStation.equals(pathList.get(1))){
-             beginWay=r.rawList.get(i).way;
+             Way=r.rawList.get(i).way;
            }
     	  else if(r.rawList.get(i).thisStation.equals(pathList.get(1))&&r.rawList.get(i).nextStation.equals(pathList.get(0))) {
-    		 beginWay=r.rawList.get(i).way;
+    		 Way=r.rawList.get(i).way;
     	  }
        }
-    
-    	    System.out.println(beginWay);
-    	    
-    	    
-    	    
-    	    
-    	    
-    	    
-       }
+    	   System.out.println("乘坐"+Way);
+           for(int i=2;i<pathList.size();i++){
+        	   for(int j=0;j<r.rawList.size();j++){
+        		   if(t.transList.indexOf(pathList.get(i))!=-1) {  //pathList[i]为换乘站
+        			   if(r.rawList.get(j).thisStation.equals(pathList.get(i))&&r.rawList.get(j).nextStation.equals(pathList.get(i+1))){
+        		             Way2=r.rawList.get(j).way;
+        		           }    
+        		    	  else if(r.rawList.get(j).thisStation.equals(pathList.get(i+1))&&r.rawList.get(j).nextStation.equals(pathList.get(i))) {
+        		     		 Way2=r.rawList.get(j).way;
+        		     	  } 
+
+        	  	   }
+
+
+        		}
+        		    if(Way.equals(Way2)==false&&Way2!=null) {
+        			System.out.println("在"+pathList.get(i)+"换乘"+Way2);
+        			Way=Way2;
+        		  }  
+        	  }
+
+        		  
+           
+           
+           
+           
+           
+        			  
+        	  }
+
+          
+          
+          
+          
+       
        
        
        
