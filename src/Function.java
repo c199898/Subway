@@ -3,25 +3,33 @@ import java.util.ArrayList;
 
 public class Function {
      Read r=new Read();
+     ArrayList <String> result1;
+     
+     public Function() {
+    	 this.result1=new ArrayList <String> ();
+     }
      
      
-	public void search() {    //输入站名，输出经过该站的地铁线路
+     
+	public void search(String ss) {    //输入站名，输出经过该站的地铁线路
 		int flag=0;
-		String ss = null;
-		Scanner sc=new Scanner(System.in);
-		System.out.println("请输入站名：");
-		while(sc.hasNext()) {
-		ss=sc.nextLine();	
+		//System.out.println("请输入站名：");
+		result1.removeAll(result1);
 		for(int i=0;i<r.stationList.size();i++) {
 			if(ss.equals(r.stationList.get(i).name)) {
 				flag=1;
-				System.out.println(r.stationList.get(i).way);
+				//System.out.println(r.stationList.get(i).way);
+				result1.add(r.stationList.get(i).way);
 			}
 		}
-		if(flag==0) System.out.println("没有该站点");
+		if(flag==0) {
+			result1.add("没有该站点");
+			//System.out.println("没有该站点");
 		}
 		
-	}
+		
+		}
+		
 	
 	
 	public String[] toEnd(String way,String endStation) {   //输入线路与终点站，输出所有站点

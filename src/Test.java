@@ -3,7 +3,7 @@
 
 public class Test {
 	
-    public static void main(String[] args) {
+    public static void test() {
     	Read r=new Read();
         SearchPath sp=new SearchPath();
            int x=r.nameList.indexOf("光谷广场");

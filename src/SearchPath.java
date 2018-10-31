@@ -11,11 +11,15 @@ public class SearchPath {
        String Way;
        String Way2;
        public ArrayList <String> pathList;
+       public ArrayList <String> result1;
+       public ArrayList <String> result2;
        Read r=new Read();
        TransStation t=new TransStation();
        
        public SearchPath() {
     	   this.pathList=new ArrayList <String>();
+    	   this.result1=new ArrayList <String> ();
+    	   this.result2=new ArrayList <String> ();
        }
        
        public void init() {
@@ -74,29 +78,38 @@ public class SearchPath {
     	       else if(dis[x][y]>30&&dis[x][y]<=41) normalPrice=6;
     	       else if(dis[x][y]>41&&dis[x][y]<=54) normalPrice=7;
     	     //输出距离和价格
-              System.out.println("距离为："+dis[x][y]);
-              System.out.println("普通票价格为："+normalPrice);
-              System.out.println("武汉通价格为："+normalPrice*0.9);
-              System.out.println("日票价格为：0");
+              //System.out.println("距离为："+dis[x][y]);        
+              //System.out.println("普通票价格为："+normalPrice);
+              //System.out.println("武汉通价格为："+normalPrice*0.9);
+              //System.out.println("日票价格为：0");
+    	       result1.add("距离为："+dis[x][y]);
+    	       result1.add("普通票价格为："+normalPrice);
+    	       result1.add("武汉通价格为："+normalPrice*0.9);
+    	       result1.add("日票价格为：0");
     	    //打印路径
     		       if(x!=y)
     		       {
     		        next=path[x][y];        //next为起点i的后继顶点
-    		       System.out.println("输出路径");
+    		       //System.out.println("输出路径");
+    		        result1.add("输出路径");
     		       if(next==0)
-    		       System.out.println("不可达");
+    		       //System.out.println("不可达");
+    		       result1.add("不可达");
     		       else//Pij存在
     		       {
-    		        System.out.println(r.nameList.get(x));
+    		        //System.out.println(r.nameList.get(x));
     		        pathList.add(r.nameList.get(x));
+    		        result1.add(r.nameList.get(x));
     		        while(next!=y)
     		        {
     		          pathList.add(r.nameList.get(next));
-    		          System.out.println("——>"+r.nameList.get(next));  //打印后继点
+    		          //System.out.println("——>"+r.nameList.get(next));  //打印后继点
+    		          result1.add("——>"+r.nameList.get(next));
     		          next=path[next][y];        //继续找下一个后继点
     		         }
     		           pathList.add(r.nameList.get(y));
-    		           System.out.println("——>"+r.nameList.get(y));       //打印终点
+    		           //System.out.println("——>"+r.nameList.get(y));       //打印终点
+    		           result1.add("——>"+r.nameList.get(y));
     		        }
     		      }
     		     
@@ -114,7 +127,8 @@ public class SearchPath {
     		 Way=r.rawList.get(i).way;
     	  }
        }
-    	   System.out.println("乘坐"+Way);
+    	   //System.out.println("乘坐"+Way);
+    	   result2.add("乘坐"+Way);
            for(int i=2;i<pathList.size()-1;i++){
         	   for(int j=0;j<r.rawList.size();j++){
         		   if(t.transList.indexOf(pathList.get(i))!=-1) {  //pathList[i]为换乘站
@@ -130,7 +144,8 @@ public class SearchPath {
 
         		}
         		    if(Way.equals(Way2)==false&&Way2!=null) {
-        			System.out.println("在"+pathList.get(i)+"换乘"+Way2);
+        			//System.out.println("在"+pathList.get(i)+"换乘"+Way2);
+        			result2.add("在"+pathList.get(i)+"换乘"+Way2);
         			Way=Way2;
         		  }  
         	  }
